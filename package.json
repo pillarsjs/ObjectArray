@@ -1,0 +1,18 @@
+{
+  "name": "objectarray",
+  "description": "JS Array version for objects colletions... oa.add({id:'1',...});oa.get('id');oa.move('id','...');oa.position('id');",
+  "version": "0.1.0",
+  "author": {
+    "name": "Bifuer",
+    "email": "bifuer@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/bifuer/objectarray"
+  },
+  "main": "./objectarray.js",
+  "scripts": {},
+  "dependencies": {
+  },
+  "readmeFilename": "readme.md"
+}
