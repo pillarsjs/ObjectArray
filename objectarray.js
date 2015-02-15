@@ -84,25 +84,3 @@ ObjectArray.prototype.remove = function(index,pid){
     return undefined;
   }
 };
-
-/* ---------------------------- *
-
-var oa = new ObjectArray(
-    {id:'a',something:'a...'},
-    {id:'c',something:'c...'}
-);
-
-console.log(typeof oa);
-console.log(oa.constructor.name);
-console.log(oa);
-console.log(oa.insert({id:'-',something:'-...'},0));
-console.log(oa.insertAfter({id:'b',something:'b...'},'a'));
-console.log(JSON.stringify(oa));
-console.log(oa.get('b'));
-console.log(oa.search('c'));
-console.log(oa.remove('c'));
-console.log(JSON.stringify(oa));
-console.log(oa.moveAfter('-','b'));
-console.log(JSON.stringify(oa));
-
-/* ---------------------------- */
