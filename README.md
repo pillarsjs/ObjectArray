@@ -1,5 +1,9 @@
 # Clase ObjectArray
-La **Clase ObjectArray** permite instanciar un objeto de tipo ObjectArray.
+La **Clase ObjectArray** permite instanciar un objeto de tipo ObjectArray. [npm](https://www.npmjs.com/package/objectarray)
+
+```javascript
+var ObjectArray = require('objectarray');
+```
 
 > La idea trata de tener un Array de Objetos, cuyos objetos tienen una propiedad que los identifica de forma única. Esta propiedad por defecto es 'id'. 
 > Al objeto se le dota de una serie de métodos para manejar este array de objetos. 
