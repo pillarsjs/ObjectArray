@@ -1,6 +1,6 @@
 {
   "name": "objectarray",
-  "description": "JS Array version for objects colletions... oa.add({id:'1',...});oa.get('id');oa.move('id','...');oa.position('id');",
+  "description": "ObjectArray Class. An Array of Objects with methods to work with it. .insert(), .move(), .remove(), etc.",
   "version": "0.1.0",
   "author": {
     "name": "Bifuer",
