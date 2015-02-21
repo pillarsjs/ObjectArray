@@ -38,9 +38,9 @@ describe("ObjectArray -----",function(){
         {id:'OB-1',something:'ob-1...'},
         {id:'OB-2',something:'ob-2...'});
 
-      oa.insert({'id': 'OB-3', 'something' : 'ob-3...'});
-
       test
+        .value(oa.insert({'id': 'OB-3', 'something' : 'ob-3...'}))
+          .isType("object")
         .value(oa)
           .isType("object")
         .value(oa[0])
@@ -50,9 +50,9 @@ describe("ObjectArray -----",function(){
         .value(oa[2])
           .is({'id': 'OB-3', 'something' : 'ob-3...'})
 
-      oa.insert({'id': 'OB-4', 'something' : 'ob-4...'});
-
       test
+        .value(oa.insert({'id': 'OB-4', 'something' : 'ob-4...'}))
+          .isType("object")
         .value(oa)
           .isType("object")
         .value(oa[0])
@@ -82,20 +82,26 @@ describe("ObjectArray -----",function(){
 
     it("Only element with void object and no existing index",function(){     
       var oa = new ObjectArray();
-      oa.insert({'id': 'OB-3', 'something' : 'ob-3...'},4);
+
       test
+        .value( oa.insert({'id': 'OB-3', 'something' : 'ob-3...'},4))
+          .isType("object")
         .value(oa[0])
           .is({'id': 'OB-3', 'something' : 'ob-3...'})
 
       var oa = new ObjectArray();
-      oa.insert({'id': 'OB-3', 'something' : 'ob-3...'},-1);
+
       test
+        .value(oa.insert({'id': 'OB-3', 'something' : 'ob-3...'},-1))
+          .isType("object")
         .value(oa[0])
           .is({'id': 'OB-3', 'something' : 'ob-3...'})
 
       var oa = new ObjectArray();
-      oa.insert({'id': 'OB-3', 'something' : 'ob-3...'},'OBBB');
+  
       test
+        .value(oa.insert({'id': 'OB-3', 'something' : 'ob-3...'},'OBBB'))
+          .isType("object")
         .value(oa[0])
           .is({'id': 'OB-3', 'something' : 'ob-3...'})
 
@@ -143,9 +149,9 @@ describe("ObjectArray -----",function(){
         {id:'OB-1',something:'ob-1...'},
         {id:'OB-2',something:'ob-2...'});
 
-      oa.insertAfter({'id': 'OB-3', 'something' : 'ob-3...'});
-
       test
+        .value( oa.insertAfter({'id': 'OB-3', 'something' : 'ob-3...'}))
+          .isType("object")
         .value(oa)
           .isType("object")
         .value(oa[0])
@@ -155,9 +161,9 @@ describe("ObjectArray -----",function(){
         .value(oa[2])
           .is({'id': 'OB-3', 'something' : 'ob-3...'})
 
-      oa.insertAfter({'id': 'OB-4', 'something' : 'ob-4...'});
-
       test
+        .value(oa.insertAfter({'id': 'OB-4', 'something' : 'ob-4...'}))
+          .isType("object")
         .value(oa)
           .isType("object")
         .value(oa[0])
@@ -224,14 +230,18 @@ describe("ObjectArray -----",function(){
 
     it("With no existing pid",function(){     
       var oa = new ObjectArray();
-      oa.insertAfter({'id': 'OB-3', 'something' : 'ob-3...'},4,'XXX');
+  
       test
+        .value(oa.insertAfter({'id': 'OB-3', 'something' : 'ob-3...'},4,'XXX'))
+          .isType("object")
         .value(oa[0])
           .is({'id': 'OB-3', 'something' : 'ob-3...'})
 
       var oa = new ObjectArray();
-      oa.insertAfter({'id': 'OB-3', 'something' : 'ob-3...'},-1,'YYY');
+     
       test
+        .value( oa.insertAfter({'id': 'OB-3', 'something' : 'ob-3...'},-1,'YYY'))
+          .isType("object")
         .value(oa[0])
           .is({'id': 'OB-3', 'something' : 'ob-3...'})
 
@@ -665,12 +675,12 @@ describe("ObjectArray -----",function(){
       var oa = new ObjectArray({id:'OB-0'},{id:'OB-1'},{id:'OB-2'},{id:'OB-3'},{id:'OB-4'},{id:'OB-5'},{id:'OB-6'},{id:'OB-7'},{id:'OB-8'});
 
       test
-        .value(oa.remove(-1))
+        .value(oa.remove(-1))  // elimina el último
           .is(true)
         .value(oa.remove(100))
           .is(false)
 
-        .value(oa.remove(9)) // El último valor de la lista da error
+        .value(oa.remove(8)) // El último valor de la lista da error
           .is(false)
       
         .value(oa[0])
@@ -690,9 +700,9 @@ describe("ObjectArray -----",function(){
         .value(oa[7])
           .is({id:'OB-7'})
         .value(oa[8])
-          .is({id:'OB-8'})
+          .is(undefined)
         .value(oa.length)
-          .is(9)
+          .is(8)
      })
 
     it("Removing with string index",function(){     
