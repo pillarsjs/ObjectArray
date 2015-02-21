@@ -9,8 +9,8 @@ describe("ObjectArray -----",function(){
         .value(oa)
           .isType("object")
 
-     })
-     it("With parameters",function(){
+    })
+    it("With parameters",function(){
       var oa = new ObjectArray(
         {id:'a',something:'a...'});
 
@@ -30,6 +30,16 @@ describe("ObjectArray -----",function(){
         .value(oa2[1])
           .is({id:'b',something:'b...'})
     })
+
+    it("With pid",function(){     
+      var oa = new ObjectArray();
+      oa.pid = "ID";
+      test
+        .value(oa)
+          .isType("object")
+
+    })
+
   })
 
   describe("Insert (element [, index, pid])",function(){ 
@@ -308,6 +318,20 @@ describe("ObjectArray -----",function(){
         .value(oa.get('OB-3','id'))
           .is(undefined)
     })
+
+    it("pid different.  oa.pid='ID', oa.get('OB-3'), {ID:'OB-3'}  ",function(){    
+
+      var oa = new ObjectArray({ID:'OB-0'},{ID:'OB-1'},{ID:'OB-2'},{ID:'OB-3'},{ID:'OB-4'},{ID:'OB-5'},{ID:'OB-6'},{ID:'OB-7'},{ID:'OB-8'});
+      oa.pid="ID";
+
+      test
+        .value(oa.get('OB-3'))
+          .is({ID:'OB-3'})
+        .value(oa.get('OB-6'))
+          .is({ID:'OB-6'})
+        .value(oa.get('OB-3','id'))
+          .is(undefined)
+    })
   })
 
   describe("Search",function(){ 
@@ -443,24 +467,12 @@ describe("ObjectArray -----",function(){
     })
 
 
-    it("Moving positions not existing",function(){
+    it("Moving end positions",function(){
       var oa = new ObjectArray({id:'OB-0'},{id:'OB-1'},{id:'OB-2'},{id:'OB-3'},{id:'OB-4'},{id:'OB-5'},{id:'OB-6'},{id:'OB-7'},{id:'OB-8'});
   
       test
-        .value(oa.move(100,0))
-          .is(false)
-        .value(oa.move(100,20))
-          .is(false)
-        .value(oa.move(0,9))
+        .value(oa.move(0,9))   // este mueve
           .is(true)
-        .value(oa.move(0,10))
-          .is(false)
-        .value(oa.move(100,100))
-          .is(false)
-        .value(oa.move(100,-1))
-          .is(false)
-        .value(oa.move(0,100))
-          .is(false)
 
         .value(oa[8])
           .is({id:'OB-0'})
@@ -484,6 +496,79 @@ describe("ObjectArray -----",function(){
           .is(9)
     })
 
+
+    it("Moving to not existing positions",function(){
+      var oa = new ObjectArray({id:'OB-0'},{id:'OB-1'},{id:'OB-2'},{id:'OB-3'},{id:'OB-4'},{id:'OB-5'},{id:'OB-6'},{id:'OB-7'},{id:'OB-8'});
+  
+      test
+        .value(oa.move(0,10))
+          .is(false)
+        .value(oa.move(0,20))
+          .is(false)
+        .value(oa.move(100,100))
+          .is(false)
+        .value(oa.move(0,100))
+          .is(false)
+        .value(oa.move(-1,100))
+          .is(false)
+
+        .value(oa[0])
+          .is({id:'OB-0'})
+        .value(oa[1])
+          .is({id:'OB-1'})
+        .value(oa[2])
+          .is({id:'OB-2'})
+        .value(oa[3])
+          .is({id:'OB-3'})
+        .value(oa[4])
+          .is({id:'OB-4'})
+        .value(oa[5])
+          .is({id:'OB-5'})
+        .value(oa[6])
+          .is({id:'OB-6'})
+        .value(oa[7])
+          .is({id:'OB-7'})
+        .value(oa[8])
+          .is({id:'OB-8'})
+        .value(oa.length)
+          .is(9)
+    })
+
+    it("Moving from not existing positions",function(){
+      var oa = new ObjectArray({id:'OB-0'},{id:'OB-1'},{id:'OB-2'},{id:'OB-3'},{id:'OB-4'},{id:'OB-5'},{id:'OB-6'},{id:'OB-7'},{id:'OB-8'});
+  
+      test
+        .value(oa.move(100,0))
+          .is(false)
+        .value(oa.move(100,8))
+          .is(false)
+        .value(oa.move(100,2))
+          .is(false)
+        .value(oa.move(100,-1))
+          .is(false)
+
+        .value(oa[0])
+          .is({id:'OB-0'})
+        .value(oa[1])
+          .is({id:'OB-1'})
+        .value(oa[2])
+          .is({id:'OB-2'})
+        .value(oa[3])
+          .is({id:'OB-3'})
+        .value(oa[4])
+          .is({id:'OB-4'})
+        .value(oa[5])
+          .is({id:'OB-5'})
+        .value(oa[6])
+          .is({id:'OB-6'})
+        .value(oa[7])
+          .is({id:'OB-7'})
+        .value(oa[8])
+          .is({id:'OB-8'})
+        .value(oa.length)
+          .is(9)
+    })
+
     
 
     it("Moving to -1 -> oa.move(0, -1) devuelve true y mueve la pos 0 a la última posición ",function(){
@@ -493,7 +578,7 @@ describe("ObjectArray -----",function(){
         .value(oa.move(0, -1))
           .is(true)
 
-        .value(oa[8])
+        .value(oa[7])
           .is({id:'OB-0'})
         .value(oa[0])
           .is({id:'OB-1'})
@@ -509,7 +594,7 @@ describe("ObjectArray -----",function(){
           .is({id:'OB-6'})
         .value(oa[6])
           .is({id:'OB-7'})
-        .value(oa[7])
+        .value(oa[8])
           .is({id:'OB-8'})
         .value(oa.length)
           .is(9)
@@ -596,7 +681,42 @@ describe("ObjectArray -----",function(){
           .is({id:'OB-8'})
     })
 
-    it("Moving with string index values to string index values",function(){
+    it("Moving with integer values to string values. oa.move(0,'OB-5'). ",function(){
+      var oa = new ObjectArray({id:'OB-0'},{id:'OB-1'},{id:'OB-2'},{id:'OB-3'},{id:'OB-4'},{id:'OB-5'},{id:'OB-6'},{id:'OB-7'},{id:'OB-8'});
+
+      test
+        .value( oa.move(0,'OB-1'))
+          .is(true)
+        .value( oa.move(0,'OB-0'))
+          .is(true)
+        .value( oa.move(8,'OB-8'))
+          .is(true)
+        .value(oa.move(0,'OB-5'))
+          .is(true)
+        .value(oa.move(7,'OB-2'))
+          .is(true)
+        
+        .value(oa[0])
+          .is({id:'OB-1'})
+        .value(oa[2])
+          .is({id:'OB-2'})
+        .value(oa[3])
+          .is({id:'OB-3'})
+        .value(oa[4])
+          .is({id:'OB-4'})
+        .value(oa[5])
+          .is({id:'OB-0'})
+        .value(oa[6])
+          .is({id:'OB-5'})
+        .value(oa[7])
+          .is({id:'OB-6'})
+        .value(oa[1])
+          .is({id:'OB-7'})
+        .value(oa[8])
+          .is({id:'OB-8'})
+    })
+
+    it("Moving with string index values to string index values oa.move('OB-0','OB-5')",function(){
       var oa = new ObjectArray({id:'OB-0'},{id:'OB-1'},{id:'OB-2'},{id:'OB-3'},{id:'OB-4'},{id:'OB-5'},{id:'OB-6'},{id:'OB-7'},{id:'OB-8'});
       test
         .value(oa.move('OB-0','OB-1'))
@@ -628,6 +748,97 @@ describe("ObjectArray -----",function(){
           .is({id:'OB-7'})
         .value(oa[8])
           .is({id:'OB-8'})
+    })
+
+     it("Moving. oa.move(0,-1) ",function(){
+      var oa = new ObjectArray({id:'OB-0'},{id:'OB-1'},{id:'OB-2'},{id:'OB-3'},{id:'OB-4'},{id:'OB-5'},{id:'OB-6'},{id:'OB-7'},{id:'OB-8'});
+      var oa2 = new ObjectArray({id:'OB-0'},{id:'OB-1'},{id:'OB-2'},{id:'OB-3'},{id:'OB-4'},{id:'OB-5'},{id:'OB-6'},{id:'OB-7'},{id:'OB-8'});
+      test
+        .value(oa.move(0,-1))
+          .is(true)
+        .value(oa2.move(0,8))
+          .is(true)
+        .value(oa[0])
+          .is(oa2[0])
+        .value(oa[7])
+          .is(oa2[7])
+        .value(oa[8])
+          .is(oa2[8])
+        .value(oa[0])
+          .is({id:'OB-1'})
+        .value(oa[7])
+          .is({id:'OB-0'})
+        .value(oa[8])
+          .is({id:'OB-8'})
+        ;
+    })
+
+    it("Moving. oa.move(0,-4) ",function(){
+      var oa = new ObjectArray({id:'OB-0'},{id:'OB-1'},{id:'OB-2'},{id:'OB-3'},{id:'OB-4'},{id:'OB-5'},{id:'OB-6'},{id:'OB-7'},{id:'OB-8'});
+      var oa2 = new ObjectArray({id:'OB-0'},{id:'OB-1'},{id:'OB-2'},{id:'OB-3'},{id:'OB-4'},{id:'OB-5'},{id:'OB-6'},{id:'OB-7'},{id:'OB-8'});
+      test
+        .value(oa.move(0,-4))
+          .is(true)
+        .value(oa2.move(0,5))
+          .is(true)
+        .value(oa[5])
+          .is(oa2[5]);
+    })
+
+    it("Moving. oa.move(-2,-9) ",function(){
+      var oa = new ObjectArray({id:'OB-0'},{id:'OB-1'},{id:'OB-2'},{id:'OB-3'},{id:'OB-4'},{id:'OB-5'},{id:'OB-6'},{id:'OB-7'},{id:'OB-8'});
+      var oa2 = new ObjectArray({id:'OB-0'},{id:'OB-1'},{id:'OB-2'},{id:'OB-3'},{id:'OB-4'},{id:'OB-5'},{id:'OB-6'},{id:'OB-7'},{id:'OB-8'});
+      test
+        .value(oa.move(-2, -9))
+          .is(true)
+        .value(oa2.move(7,0))
+          .is(true)
+        .value(oa[0])
+          .is(oa2[0])
+        .value(oa[7])
+          .is(oa2[7])
+        .value(oa[8])
+          .is(oa2[8]);
+    })
+
+    it("Moving. oa.move(-2,-10) ",function(){
+      var oa = new ObjectArray({id:'OB-0'},{id:'OB-1'},{id:'OB-2'},{id:'OB-3'},{id:'OB-4'},{id:'OB-5'},{id:'OB-6'},{id:'OB-7'},{id:'OB-8'});
+      var oa2 = new ObjectArray({id:'OB-0'},{id:'OB-1'},{id:'OB-2'},{id:'OB-3'},{id:'OB-4'},{id:'OB-5'},{id:'OB-6'},{id:'OB-7'},{id:'OB-8'});
+      test
+        .value(oa.move(-2, -10))
+          .is(false)
+        .value(oa2.move(7,undefined))
+          .is(false)
+        .value(oa[0])
+          .is(oa2[0])
+        .value(oa[1])
+          .is(oa2[1])
+        .value(oa[2])
+          .is(oa2[2])
+        .value(oa[3])
+          .is(oa2[3])
+        .value(oa[4])
+          .is(oa2[4])
+        .value(oa[7])
+          .is(oa2[7])
+        .value(oa[8])
+          .is(oa2[8]);
+    })
+
+    it("Moving. oa.move(-9,-1) ",function(){
+      var oa = new ObjectArray({id:'OB-0'},{id:'OB-1'},{id:'OB-2'},{id:'OB-3'},{id:'OB-4'},{id:'OB-5'},{id:'OB-6'},{id:'OB-7'},{id:'OB-8'});
+      var oa2 = new ObjectArray({id:'OB-0'},{id:'OB-1'},{id:'OB-2'},{id:'OB-3'},{id:'OB-4'},{id:'OB-5'},{id:'OB-6'},{id:'OB-7'},{id:'OB-8'});
+      test
+        .value(oa.move(-9, -1))
+          .is(true)
+        .value(oa2.move(0,8))
+          .is(true)
+        .value(oa[0])
+          .is(oa2[0])
+        .value(oa[7])
+          .is(oa2[7])
+        .value(oa[8])
+          .is(oa2[8]);
     })
 
 
@@ -739,7 +950,38 @@ describe("ObjectArray -----",function(){
         .value(oa.length)
           .is(9)
      })
+
+    it("- MoveAfter -1. oa.moveAfter(0,-1) ",function(){
+      var oa = new ObjectArray({id:'OB-0'},{id:'OB-1'},{id:'OB-2'},{id:'OB-3'},{id:'OB-4'},{id:'OB-5'},{id:'OB-6'},{id:'OB-7'},{id:'OB-8'});
+  
+      test
+        .value(oa.moveAfter(0,-1))
+          .is(true)
+
+        .value(oa[8])
+          .is({id:'OB-0'})
+        .value(oa[0])
+          .is({id:'OB-1'})
+        .value(oa[1])
+          .is({id:'OB-2'})
+        .value(oa[2])
+          .is({id:'OB-3'})
+        .value(oa[3])
+          .is({id:'OB-4'})
+        .value(oa[4])
+          .is({id:'OB-5'})
+        .value(oa[5])
+          .is({id:'OB-6'})
+        .value(oa[6])
+          .is({id:'OB-7'})
+        .value(oa[7])
+          .is({id:'OB-8'})
+        .value(oa.length)
+          .is(9)
+     })
   })
+
+
 
   describe("remove",function(){ 
     it("Simple Remove",function(){     
