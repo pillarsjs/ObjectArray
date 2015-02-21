@@ -1,5 +1,7 @@
 # Clase ObjectArray
-La **Clase ObjectArray** permite instanciar un objeto de tipo ObjectArray.
+![license](https://img.shields.io/badge/license-MIT-blue.svg ) [![Build Status](https://img.shields.io/travis/bifuer/ObjectArray/master.svg)](https://travis-ci.org/bifuer/ObjectArray) [![npm version](https://img.shields.io/npm/v/objectArray.svg)](https://www.npmjs.com/package/objectArray) [![Github release](https://img.shields.io/github/release/bifuer/ObjectArray.svg)](https://github.com/bifuer/ObjectArray) [![npm downloads](https://img.shields.io/npm/dm/objectArray.svg)](https://www.npmjs.com/package/objectArray)
+
+La **Clase ObjectArray** permite instanciar un objeto de tipo ObjectArray, un array de objetos con métodos para insertar, borrar y mover los objetos en el array.
 
 > La idea trata de tener un Array de Objetos, cuyos objetos tienen una propiedad que los identifica de forma única. Esta propiedad por defecto es 'id'. 
 > Al objeto se le dota de una serie de métodos para manejar este array de objetos. 
