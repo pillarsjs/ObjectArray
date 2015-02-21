@@ -13,7 +13,7 @@ function ObjectArray(){
   ObjectArray.prototype.insert = function(element,index,pid,after){
     index = typeof index === 'string' ? this.search(index,pid) : index === -1 ? this.length : index;
     index += after ? 1 : 0;
-    if(Math.floor(index) !== parseFloat(index,10) || index<0 || index>this.length){
+    if(Math.floor(index) !== parseFloat(index,10) || index<0 || index>=this.length){
       this.push(element);
     } else {
       this.splice(index,0,element);
@@ -31,7 +31,7 @@ function ObjectArray(){
 
   ObjectArray.prototype.get = function(index,pid){
     index = typeof index === 'string' ? this.search(index,pid) : index === -1 ? this.length : index;
-    if(Math.floor(index) !== parseFloat(index,10) || index<0 || index>this.length){
+    if(Math.floor(index) !== parseFloat(index,10) || index<0 || index>=this.length){
       return;
     } else {
       return this[index];
@@ -49,11 +49,11 @@ function ObjectArray(){
 
   ObjectArray.prototype.move = function(index,indexTo,pid,after){
     index = typeof index === 'string' ? this.search(index,pid) : index === -1 ? this.length : index;
-    if(Math.floor(index) !== parseFloat(index,10) || index<0 || index>this.length){
+    if(Math.floor(index) !== parseFloat(index,10) || index<0 || index>=this.length){
       return false;
     }
     indexTo = typeof indexTo === 'string' ? this.search(indexTo,pid) : indexTo === -1 ? this.length : indexTo;
-    if(Math.floor(indexTo) !== parseFloat(indexTo,10) || indexTo<0 || indexTo>this.length){
+    if(Math.floor(indexTo) !== parseFloat(indexTo,10) || indexTo<0 || indexTo>=this.length){
       return false;
     }
     indexTo += after ? 1 : 0;
@@ -72,7 +72,7 @@ function ObjectArray(){
 
   ObjectArray.prototype.remove = function(index,pid){
     index = typeof index === 'string' ? this.search(index,pid) : index === -1 ? this.length : index;
-    if(Math.floor(index) !== parseFloat(index,10) || index<0 || index>this.length){
+    if(Math.floor(index) !== parseFloat(index,10) || index<0 || index>=this.length){
       return false;
     }
     this.splice(index, 1);
