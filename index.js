@@ -49,29 +49,25 @@ function ObjectArray(){
     }
   };
 
-  ObjectArray.prototype.move = function(index,indexTo,pid,after){
-    index = typeof index === 'string' ? this.search(index,pid) : index;
-    if(index<0){index = this.length + index;}
-    if(Math.floor(index) !== parseFloat(index,10) || index<0 || index>=this.length){
+  ObjectArray.prototype.move = function(from,index,pid,after){
+    from = typeof from === 'string' ? this.search(from,pid) : from;
+    if(from<0){from = this.length + from;}
+    if(Math.floor(from) !== parseFloat(from,10) || from<0 || from>=this.length){
       return false;
     }
-    //console.log('indexTo:',indexTo);
-    indexTo = typeof indexTo === 'string' ? this.search(indexTo,pid) : indexTo;
-    //console.log('indexTo:',indexTo);
-    if(indexTo<0){indexTo = this.length + indexTo;}
-    indexTo += after ? 1 : 0;
-    //console.log('indexTo:',indexTo);
-    //console.log(Math.floor(indexTo) !== parseFloat(indexTo,10) || indexTo<0 || indexTo>this.length);
-    if(Math.floor(indexTo) !== parseFloat(indexTo,10) || indexTo<0 || indexTo>this.length){
+    index = typeof index === 'string' ? this.search(index,pid) : index;
+    if(index<0){index = this.length + index;}
+    index += after ? 1 : 0;
+    if(Math.floor(index) !== parseFloat(index,10) || index<0 || index>this.length){
       return false;
     }
     
-    if(index == indexTo || index==indexTo-1){
+    if(from == index || from==index-1){
       return true;
     }
-    var copy = this[index];
-    this.splice(indexTo, 0, copy);
-    this.splice(index > indexTo ? index+1 : index, 1);
+    var copy = this[from];
+    this.splice(index, 0, copy);
+    this.splice(from > index ? from+1 : from, 1);
     return true;
   };
 
