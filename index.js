@@ -52,7 +52,7 @@ function ObjectArray(){
     if(Math.floor(index) !== parseFloat(index,10) || index<0 || index>this.length){
       return false;
     }
-    indexTo = typeof indexTo === 'string' ? indexTo.search(indexTo,pid) : indexTo === -1 ? this.length : indexTo;
+    indexTo = typeof indexTo === 'string' ? this.search(indexTo,pid) : indexTo === -1 ? this.length : indexTo;
     if(Math.floor(indexTo) !== parseFloat(indexTo,10) || indexTo<0 || indexTo>this.length){
       return false;
     }
