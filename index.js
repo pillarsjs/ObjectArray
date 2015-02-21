@@ -67,7 +67,7 @@ function ObjectArray(){
   };
 
   ObjectArray.prototype.moveAfter = function(index,indexTo,pid){
-    this.move(index,indexTo,pid,true);
+    return this.move(index,indexTo,pid,true);
   };
 
   ObjectArray.prototype.remove = function(index,pid){
