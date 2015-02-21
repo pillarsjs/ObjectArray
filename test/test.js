@@ -348,7 +348,40 @@ describe("ObjectArray -----",function(){
   })
 
   describe("Move",function(){ 
-    it("Flip the array",function(){
+
+    it("Mover de la última posicion a la primera oa.move(8,0)",function(){
+      var oa = new ObjectArray({id:'OB-0'},{id:'OB-1'},{id:'OB-2'},{id:'OB-3'},{id:'OB-4'},{id:'OB-5'},{id:'OB-6'},{id:'OB-7'},{id:'OB-8'});
+   
+     
+      test
+        .value(oa.move(8,0))
+          .is(true)         
+     
+
+      test
+        .value(oa[1])
+          .is({id:'OB-0'})
+        .value(oa[2])
+          .is({id:'OB-1'})
+        .value(oa[3])
+          .is({id:'OB-2'})
+        .value(oa[4])
+          .is({id:'OB-3'})
+        .value(oa[5])
+          .is({id:'OB-4'})
+        .value(oa[6])
+          .is({id:'OB-5'})
+        .value(oa[7])
+          .is({id:'OB-6'})
+        .value(oa[8])
+          .is({id:'OB-7'})
+        .value(oa[0])
+          .is({id:'OB-8'})
+
+    })
+
+
+    it("Flip the array - Mover desde la última posición a la primera 8 veces, de forma que se da la vuelta completa.",function(){
       var oa = new ObjectArray({id:'OB-0'},{id:'OB-1'},{id:'OB-2'},{id:'OB-3'},{id:'OB-4'},{id:'OB-5'},{id:'OB-6'},{id:'OB-7'},{id:'OB-8'});
    
       for (i=0; i<oa.length;i++){
@@ -379,24 +412,11 @@ describe("ObjectArray -----",function(){
 
     })
 
-    it("Moving positions not existing",function(){
+    
+    it("Moving to undefined position - oa.move(0, undefined) - return false.",function(){
       var oa = new ObjectArray({id:'OB-0'},{id:'OB-1'},{id:'OB-2'},{id:'OB-3'},{id:'OB-4'},{id:'OB-5'},{id:'OB-6'},{id:'OB-7'},{id:'OB-8'});
   
       test
-        .value(oa.move(100,0))
-          .is(false)
-        .value(oa.move(100,20))
-          .is(false)
-        .value(oa.move(0,9))
-          .is(false)
-        .value(oa.move(0,10))
-          .is(false)
-        .value(oa.move(100,100))
-          .is(false)
-        .value(oa.move(100,-1))
-          .is(false)
-        .value(oa.move(0,100))
-          .is(false)
         .value(oa.move(0, undefined))
           .is(false)
 
@@ -422,7 +442,51 @@ describe("ObjectArray -----",function(){
           .is(9)
     })
 
-     it("Moving to -1 -> oa.move(0, -1) devuelve true y mueve la pos 0 a la última posición ",function(){
+
+    it("Moving positions not existing",function(){
+      var oa = new ObjectArray({id:'OB-0'},{id:'OB-1'},{id:'OB-2'},{id:'OB-3'},{id:'OB-4'},{id:'OB-5'},{id:'OB-6'},{id:'OB-7'},{id:'OB-8'});
+  
+      test
+        .value(oa.move(100,0))
+          .is(false)
+        .value(oa.move(100,20))
+          .is(false)
+        .value(oa.move(0,9))
+          .is(true)
+        .value(oa.move(0,10))
+          .is(false)
+        .value(oa.move(100,100))
+          .is(false)
+        .value(oa.move(100,-1))
+          .is(false)
+        .value(oa.move(0,100))
+          .is(false)
+
+        .value(oa[8])
+          .is({id:'OB-0'})
+        .value(oa[0])
+          .is({id:'OB-1'})
+        .value(oa[1])
+          .is({id:'OB-2'})
+        .value(oa[2])
+          .is({id:'OB-3'})
+        .value(oa[3])
+          .is({id:'OB-4'})
+        .value(oa[4])
+          .is({id:'OB-5'})
+        .value(oa[5])
+          .is({id:'OB-6'})
+        .value(oa[6])
+          .is({id:'OB-7'})
+        .value(oa[7])
+          .is({id:'OB-8'})
+        .value(oa.length)
+          .is(9)
+    })
+
+    
+
+    it("Moving to -1 -> oa.move(0, -1) devuelve true y mueve la pos 0 a la última posición ",function(){
       var oa = new ObjectArray({id:'OB-0'},{id:'OB-1'},{id:'OB-2'},{id:'OB-3'},{id:'OB-4'},{id:'OB-5'},{id:'OB-6'},{id:'OB-7'},{id:'OB-8'});
   
       test
