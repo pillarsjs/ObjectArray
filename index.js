@@ -74,7 +74,7 @@ function ObjectArray(){
     index = typeof index === 'string' ? this.search(index,pid) : index === -1 ? this.length : index;
     if(Math.floor(index) !== parseFloat(index,10) || index<0 || index>this.length){
       return false;
-    } else {
-      this.splice(index, 1);
     }
+    this.splice(index, 1);
+    return true;
   };
