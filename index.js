@@ -84,3 +84,14 @@ function ObjectArray(){
     this.splice(index, 1);
     return true;
   };
+
+  ObjectArray.prototype.keys = function(pid,all){
+    pid = pid || this.pid || 'id';
+    var keys = [];
+    for(var i=0,l=this.length;i<l;i++){
+      if(all || this[i][pid] !== undefined){
+        keys.push(this[i][pid]);
+      }
+    }
+    return keys;
+  };
