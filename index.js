@@ -40,6 +40,17 @@ function ObjectArray(){
     }
   };
 
+  ObjectArray.prototype.getAll = function(index,pid){
+    pid = pid || this.pid || 'id';
+    var results = [];
+    for(var i=0,l=this.length;i<l;i++){
+      if(this[i][pid] === index){
+        results.push(this[i]);
+      }
+    }
+    return results;
+  };
+
   ObjectArray.prototype.search = function(index,pid){
     pid = pid || this.pid || 'id';
     for(var i=0,l=this.length;i<l;i++){
@@ -47,6 +58,17 @@ function ObjectArray(){
         return i;
       }
     }
+  };
+
+  ObjectArray.prototype.searchAll = function(index,pid){
+    pid = pid || this.pid || 'id';
+    var results = [];
+    for(var i=0,l=this.length;i<l;i++){
+      if(this[i][pid] === index){
+        results.push(i);
+      }
+    }
+    return results;
   };
 
   ObjectArray.prototype.move = function(from,index,pid,after){
