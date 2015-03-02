@@ -1,7 +1,7 @@
 {
   "name": "objectarray",
   "description": "JS Array version for objects colletions",
-  "version": "1.2.1",
+  "version": "1.3.0",
   "author": {
     "name": "Bifuer",
     "email": "bifuer@gmail.com"
@@ -26,7 +26,12 @@
     "array",
     "order",
     "dynamic structures",
-    "ordering objects"
+    "ordering objects",
+    "object keys",
+    "array search",
+    "js",
+    "javascript",
+    "node"
   ],
   "dependencies": {
   },
