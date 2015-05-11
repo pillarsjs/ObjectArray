@@ -83,6 +83,12 @@ Devuelve el índice en el array del objeto.
 oa.search('OB-0');
 // Devuelve la posición del objeto en el array.
 ```
+### ObjectArray.prototype.values (*pid*)
+Devuelve todos los valores del pid existentes en el ObjectArray.
+
+```javascript
+oa.values('id');
+```
 
 ### ObjectArray.prototype.move (*index*,  *indexTo* [, *pid*])
 Mueve el objeto ubicado en la posición *index* a la posición *indexTo*, desplazando el resto de elementos hacia arriba. Si la propiedad que se quiere utilizar para identificar a los objetos es diferente de 'id' se puede utilizar el parámetro *pid*.
