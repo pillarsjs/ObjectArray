@@ -56,7 +56,7 @@ Podemos especificar un identificador diferente de *id* con el parámetro *pid*.
 Igual que insert, pero inserAfter inserta después de la posición encontrada.
 
 ### ObjectArray.prototype.get (*index* [, *pid*])
-Devuelve el objeto que ocupa la posición *index*. Si *index* es Integer indica la posición en el array; si es String, será la posición del primer elemento cuyo identificador 'id' sea igual a *index*. En en caso de especificar *pid*, devolverá el primer elemento cuya propiedad *pid* sea igual a *index*.
+Devuelve el objeto que ocupa la posición *index*. Si *index* es Integer indica la posición en el array; si es String, será el primer elemento cuyo identificador 'id' sea igual a *index*. En caso de especificar *pid*, devolverá el primer elemento cuya propiedad *pid* sea igual a *index*.
 Devuelve undefined si no encuentra nada, si encuentra el elemento lo devuelve.
 ```javascript
 oa.get(0);
@@ -71,8 +71,11 @@ oa.get('ob-2...','something');
 // Devuelve un objeto cuya propiedad 'something'='ob-2...'
 ```
 
+### ObjectArray.prototype.getAll (*index* [, *pid*])
+Su funcionamiento es similar a *ObjectArray.prototype.get()*, pero en lugar de devolver sólo el primer elemento cuyo identificador 'id' sea igual a *index*, devuelve todos los objetos cuyo 'id' sea igual a *index*. En el caso de especificar *pid*, devolverá todos los elementos cuya propiedad *pid* sea igual a *index*.
+
 ### ObjectArray.prototype.search (*index* [, *pid*])
-Devuelve el indice del objeto cuya propiedad 'id'=*index*. Si se especifica *pid*, se busca en la propiedad *pid* indicada en vez de en 'id'
+Devuelve el indice del primer objeto encontrado cuya propiedad 'id'=*index*. Si se especifica *pid*, se busca en la propiedad *pid* indicada en vez de en 'id'
 + *index*: string del valor de la propiedad 'id' en caso de no especificar *pid*.
 + *pid*: string que especifica la propiedad
 > En este método *index* no debe ser Integer.
@@ -82,6 +85,16 @@ Devuelve el índice en el array del objeto.
 ```javascript
 oa.search('OB-0');
 // Devuelve la posición del objeto en el array.
+```
+
+### ObjectArray.prototype.searchAll (*index* [, *pid*])
+Funcionamiento similar a *ObjectArray.prototype.search()*, pero en vez de devolver el indice del primer objeto, devuelve los indices de todos los objetos cuya propiedad 'id'=*index*. Si se especifica *pid*, se busca en la propiedad *pid* el valor *index*.
+
+### ObjectArray.prototype.values (*pid*)
+Devuelve todos los valores del pid existentes en el ObjectArray.
+
+```javascript
+oa.values('id');
 ```
 
 ### ObjectArray.prototype.move (*index*,  *indexTo* [, *pid*])
