@@ -107,13 +107,11 @@ function ObjectArray(){
     return true;
   };
 
-  ObjectArray.prototype.keys = function(pid,all){
+  ObjectArray.prototype.keys = function(pid){
     pid = pid || this.pid || 'id';
     var keys = [];
     for(var i=0,l=this.length;i<l;i++){
-      if(all || this[i][pid] !== undefined){
-        keys.push(this[i][pid]);
-      }
+      keys.push(this[i][pid]);
     }
     return keys;
   };
