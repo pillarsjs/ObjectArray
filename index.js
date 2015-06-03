@@ -1,7 +1,13 @@
 /* jslint node: true */
 "use strict";
 
-module.exports = ObjectArray;
+global.modulesCache = global.modulesCache || {};
+if(global.modulesCache['objectarray']){
+  module.exports = global.modulesCache['objectarray'];
+  return;
+}
+
+module.exports = global.modulesCache['objectarray'] = ObjectArray;
 function ObjectArray(){
   var args = Array.prototype.slice.call(arguments);
   this.splice.apply(this,[0,0].concat(args));
