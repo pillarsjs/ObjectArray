@@ -1,5 +1,5 @@
 # Clase ObjectArray
-![license](https://img.shields.io/badge/license-MIT-blue.svg ) [![Build Status](https://img.shields.io/travis/bifuer/ObjectArray/master.svg)](https://travis-ci.org/bifuer/ObjectArray) [![npm version](https://img.shields.io/npm/v/objectarray.svg)](https://www.npmjs.com/package/objectarray) [![Github release](https://img.shields.io/github/release/bifuer/ObjectArray.svg)](https://github.com/bifuer/ObjectArray) [![npm downloads](https://img.shields.io/npm/dm/objectarray.svg)](https://www.npmjs.com/package/objectarray)
+![license](https://img.shields.io/badge/license-MIT-blue.svg ) [![Build Status](https://img.shields.io/travis/pillarsjs/ObjectArray/master.svg)](https://travis-ci.org/pillarsjs/ObjectArray) [![npm version](https://img.shields.io/npm/v/objectarray.svg)](https://www.npmjs.com/package/objectarray) [![Github release](https://img.shields.io/github/release/bifuer/ObjectArray.svg)](https://github.com/pillarsjs/ObjectArray) [![npm downloads](https://img.shields.io/npm/dm/objectarray.svg)](https://www.npmjs.com/package/objectarray)
 
 La **Clase ObjectArray** permite instanciar un objeto de tipo ObjectArray, un array de objetos con métodos para insertar, borrar y mover los objetos en el array. [npm](https://www.npmjs.com/package/objectarray)
 

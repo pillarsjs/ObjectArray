@@ -12,13 +12,13 @@
       "email": "cheloq@gmail.com"
     }
   ],
-  "homepage": "https://github.com/bifuer/objectarray",
+  "homepage": "https://github.com/pillarsjs/objectarray",
   "repository": {
     "type": "git",
-    "url": "git://github.com/bifuer/objectarray"
+    "url": "git://github.com/pillarsjs/objectarray"
   },
   "bugs": {
-    "url": "https://github.com/bifuer/objectarray/issues",
+    "url": "https://github.com/pillarsjs/objectarray/issues",
     "email" : "cheloq@gmail.com"
   },
   "keywords": [
