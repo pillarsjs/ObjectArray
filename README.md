@@ -20,7 +20,7 @@ var oa = new ObjectArray(
 
 Esto convertirá a la variable *oa* en un **Array de Objetos**, donde cada objeto que compone el array se identificará mediante una propiedad, por defecto 'id'. Además añade a la instancia una serie métodos para trabajar con el array de objetos.
 
-##Métodos
+## Métodos
 ### ObjectArray.prototype.insert (*element* [, *index*, *pid*])
 Inserta un objeto *element* en el array, en la posición indicada por *index*, y si es necesario indicando un *pid*.
 + *element*: objeto a insertar en el arrayObject.
